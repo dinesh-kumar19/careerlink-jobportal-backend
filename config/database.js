@@ -12,9 +12,9 @@ const mysql = require('mysql2');
 // Use environment variables to get the database configuration
 const pool = mysql.createPool({
     port: process.env.DB_PORT || 3306, 
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'mysql.railway.internal',
     user: process.env.DB_USER || 'root', 
-    password: process.env.DB_PASS || '', 
+    password: process.env.DB_PASS || 'bEbAqpWhuOzISEuTHCpKLMefJVafvxRP', 
     database: process.env.DB_NAME || 'job_portal', 
     connectionLimit: 10
 });
