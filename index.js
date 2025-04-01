@@ -26,7 +26,9 @@ app.use("/api/jobpostings", jobpostingRouter);
 app.get('/',(req,res)=>{
     res.json("this is the home page")
 });
-
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+  });
 cron.schedule('0 0 * * *', ()=>{
     const query = 'delete from job_posting where expiredate < curdate();'
     pool.query(query,(err, result)=>{
