@@ -10,7 +10,9 @@ const cron = require('node-cron');
 const { deleteRejectedApplications } = require('./api/jobposting/jobposting.service');
 
 app.use(cors({
-    origin: 'http://localhost:4200',
+    origin: 'https://careerlink-jobportal.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true 
 }));
 app.use(express.json());
