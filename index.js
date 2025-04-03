@@ -10,9 +10,7 @@ const cron = require('node-cron');
 const { deleteRejectedApplications } = require('./api/jobposting/jobposting.service');
 
 app.use(cors({
-    origin: 'https://careerlink-jobportal.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: 'http://localhost:4200',
     credentials: true 
 }));
 app.use(express.json());
@@ -28,9 +26,7 @@ app.use("/api/jobpostings", jobpostingRouter);
 app.get('/',(req,res)=>{
     res.json("this is the home page")
 });
-app.get('/health', (req, res) => {
-    res.status(200).send('OK');
-  });
+
 cron.schedule('0 0 * * *', ()=>{
     const query = 'delete from job_posting where expiredate < curdate();'
     pool.query(query,(err, result)=>{
