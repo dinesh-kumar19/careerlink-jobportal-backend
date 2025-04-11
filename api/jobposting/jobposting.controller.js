@@ -715,9 +715,10 @@ module.exports={
             const companyCookieOptions = {
                 expires:new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES *24 * 60 * 60 * 1000
                 ),
+                secure: true,
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                sameSite: 'strict'
+                sameSite: 'none'
             }
             res.cookie('provider_authToken', companyToken, companyCookieOptions);
             return res.status(200).json({
@@ -802,9 +803,10 @@ module.exports={
                  });
                 const adminCookieOptions = {
                     expires:new Date(Date.now()+ process.env.JWT_COOKIE_EXPIRES *24*60*60*1000),
+                    secure: true,
                     httpOnly: true,
                     secure: process.env.NODE_ENV === 'production',
-                    sameSite: 'strict'
+                    sameSite: 'none'
                 }
                 res.cookie('admin_authToken', admin_token, adminCookieOptions);
                 return res.status(200).json({
