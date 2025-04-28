@@ -10,8 +10,13 @@ const cookieParser = require('cookie-parser');
 const cron = require('node-cron');
 const { deleteRejectedApplications } = require('./api/jobposting/jobposting.service');
 
+// app.use(cors({
+//     origin: 'https://careerlink-jobportal.vercel.app',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials: true 
+// }));
 app.use(cors({
-    origin: 'https://careerlink-jobportal.vercel.app',
+    origin: ['https://careerlink-jobportal.vercel.app', 'http://localhost:4200'], // allow both production and local
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true 
 }));
@@ -20,8 +25,7 @@ app.use(cookieParser());
 app.use(express.static('public')); 
 app.use('/uploads', express.static('uploads'));
 app.use('/uploads/resumes', express.static(path.join(__dirname, 'uploads/resumes')));
-
-app.use('/jobsubcategory',express.static('jobsubcategory'))
+app.use('/jobsubcategory',express.static('jobsubcategory'));
 
 app.use("/api/jobpostings", jobpostingRouter);
 
