@@ -23,4 +23,4 @@ pool.on('error', function (err) {
         throw err;
     }
 });
-module.exports = pool;
+module.exports = pool.promise();
