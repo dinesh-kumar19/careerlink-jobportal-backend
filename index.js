@@ -12,6 +12,7 @@ const { deleteRejectedApplications } = require('./api/jobposting/jobposting.serv
 
 app.use(cors({
     origin: 'https://careerlink-jobportal.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true 
 }));
 app.use(express.json());
