@@ -860,7 +860,7 @@ module.exports = {
         filterQuery += ' LIMIT ? OFFSET ?';
         filterValues.push(filterLimit, filterOffset);
         
-        console.log('Final Query:', filterQuery);          // ✅ For debugging
+        console.log('Final Query:', filterQuery);       
         console.log('Query Values:', filterValues); 
 
         pool.query(filterQuery, filterValues, (error, results) => {
